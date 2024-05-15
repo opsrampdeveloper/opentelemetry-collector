@@ -177,12 +177,12 @@ PROTO_INCLUDES := -I/usr/include/github.com/gogo/protobuf -I./
 
 # Cleanup temporary directory
 genproto-cleanup:
-	rm -Rf ${OPENTELEMETRY_PROTO_SRC_DIR}
+	#rm -Rf ${OPENTELEMETRY_PROTO_SRC_DIR}
 
 # Generate OTLP Protobuf Go files. This will place generated files in PROTO_TARGET_GEN_DIR.
 genproto: genproto-cleanup
 	mkdir -p ${OPENTELEMETRY_PROTO_SRC_DIR}
-	curl -sSL https://api.github.com/repos/open-telemetry/opentelemetry-proto/tarball/${OPENTELEMETRY_PROTO_VERSION} | tar xz --strip 1 -C ${OPENTELEMETRY_PROTO_SRC_DIR}
+	#curl -sSL https://api.github.com/repos/open-telemetry/opentelemetry-proto/tarball/${OPENTELEMETRY_PROTO_VERSION} | tar xz --strip 1 -C ${OPENTELEMETRY_PROTO_SRC_DIR}
 	# Call a sub-make to ensure OPENTELEMETRY_PROTO_FILES is populated
 	$(MAKE) genproto_sub
 	$(MAKE) fmt

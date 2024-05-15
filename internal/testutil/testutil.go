@@ -3,24 +3,11 @@
 
 package testutil // import "go.opentelemetry.io/collector/internal/testutil"
 
-import (
-	"net"
-	"os/exec"
-	"runtime"
-	"strconv"
-	"strings"
-	"testing"
-
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/require"
-	"go.opentelemetry.io/contrib/config"
-)
-
+/*
 type portpair struct {
 	first string
 	last  string
 }
-
 // GetAvailableLocalAddress finds an available local port and returns an endpoint
 // describing it. The port is available for opening when this function returns
 // provided that there is no race by some other code to grab the same port
@@ -116,3 +103,4 @@ func createExclusionsList(exclusionsText string, t testing.TB) []portpair {
 	}
 	return exclusions
 }
+*/
