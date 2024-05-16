@@ -19,6 +19,11 @@ import (
 	"go.opentelemetry.io/collector/pdata/ptrace"
 )
 
+var (
+	//LogsOpsRampChannel = make(chan plog.Logs, 100)
+	LogsOpsRampChannel = make(chan []byte, 100)
+)
+
 type debugExporter struct {
 	verbosity        configtelemetry.Level
 	logger           *zap.Logger
@@ -82,6 +87,12 @@ func (s *debugExporter) pushLogs(_ context.Context, ld plog.Logs) error {
 	if err != nil {
 		return err
 	}
-	s.logger.Info(string(buf))
+	select {
+	case LogsOpsRampChannel <- buf:
+		s.logger.Info("#######LogsExporter: Successfully sent to channel")
+	default:
+		s.logger.Info("#######LogsExporter: failed sent to channel")
+	}
+	//s.logger.Info(string(buf))
 	return nil
 }
